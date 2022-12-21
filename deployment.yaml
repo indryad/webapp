@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-webapp
+  namespace: webapp
+spec:
+  selector:
+    matchLabels:
+      app: flask-webapp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: flask-webapp
+    spec:
+      containers:
+        - name: flask-webapp
+          image: docker.io/diofathurr/flask-webapp:v1.0.0
+          ports:
+            - containerPort: 5000
